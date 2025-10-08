@@ -1,9 +1,15 @@
 from django.urls import path
-from .views import CartApiView, CarDetailApiView
+from .views import (
+    CarApiView, CarDetailApiView,
+    BrandCreateView, BrandDetailView,
+    ColorCreateView, ColorDetailView,
+)
 
 urlpatterns = [
-    path("cars/", CartApiView.as_view()),
-    path("cars/create/", CartApiView.as_view()),
+    path("cars/", CarApiView.as_view(), name="car_list"),
     path("cars/<int:car_id>/", CarDetailApiView.as_view()),
-    # path("cars/<int:pk>/", CarApiView.as_view()),
+    path("brands/", BrandCreateView.as_view()),
+    path("brands/<int:pk>/", BrandDetailView.as_view()),
+    path("colors/", ColorCreateView.as_view()),
+    path("colors/<int:pk>/", ColorDetailView.as_view()),
 ]
